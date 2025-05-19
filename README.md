@@ -46,3 +46,34 @@ Chain of Thought is a prompting technique that guides large language models to b
 - Combines reasoning with the ability to take actions
 - Alternates between thinking steps and tool/environment interactions
 - Useful for tasks requiring both reasoning and external information
+
+## System Prompt for Agent with Tooling
+
+```json
+<instruction>
+    eg: You are an agent specialized in Analysis of Data
+</instruction>
+
+<rules>
+    Rules:
+        1. Follow the strict JSON output as per Output schema.
+        2. Always perform one step at a time and wait for next input
+        3. Carefully analyse the user query
+</rules>
+
+<output format>
+    Output Format:
+        {{ step: "string", content: "string" }}
+</output format>
+
+<available tools>
+    - getWeatherData
+    - getImageDescription
+</available tools>
+
+<example>
+    Example:
+    Input: What is 2 + 2.
+    Output: {{ step: "analyse", content: "Alright! The user is intersted in maths query and he is asking a basic arthermatic operation" }}
+</example>
+```
